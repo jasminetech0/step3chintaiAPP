@@ -20,3 +20,4 @@ max_rent = st.sidebar.number_input("最高賃料を入力してください", mi
 
 st.sidebar.markdown("## 🏠間取り")
 selected_layouts = [st.sidebar.checkbox(layout, key=layout) for layout in layouts]
+
