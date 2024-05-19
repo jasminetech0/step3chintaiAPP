@@ -19,8 +19,10 @@
   <meta content="noarchive" name="robots"/>
   <!-- JJ901FI0110 -->
   <link href="/edit/assets/suumo/css/fr-list.css?1699941564000" media="screen" rel="stylesheet" type="text/css"/>
-  <!--[if lt IE 9]>
-<script src="/edit/assets/allsites/js/html5.js?1501566649000"></script>
+  <!--[if lt IE 9]>
+
+<script src="/edit/assets/allsites/js/html5.js?1501566649000"></script>
+
 <![endif]-->
   <!-- GTMタグ用↓ -->
   <script type="text/javascript">
@@ -61,7 +63,8 @@
 	sckukuri3 : [""],
 	sckukuri3nm : [""],
 	gamen_type : "10"
-}];
+}];
+
 //-->
   </script>
   <!-- GTMタグ用↑ -->
@@ -7840,12 +7843,18 @@
             <li class="themesearch-body">
              <!-- ↓===================================================================================================================↓ -->
              <!-- ↓/list/FR_040_030_CL_theme_04.html↓ -->
-             <!--<a href="/tokushu/selection/chintai_kanto/th_9.html">
-												<div>
-													<img src="/edit/assets/suumo/img/include/inc_FR_list_030_theme_04.jpg" width="150" height="110" alt="" class="ui-thumb ui-thumb--1" />
-												</div>
-												<div class="themesearch-title">賃料5万円未満</div>
-											</a>
+             <!--<a href="/tokushu/selection/chintai_kanto/th_9.html">
+
+												<div>
+
+													<img src="/edit/assets/suumo/img/include/inc_FR_list_030_theme_04.jpg" width="150" height="110" alt="" class="ui-thumb ui-thumb--1" />
+
+												</div>
+
+												<div class="themesearch-title">賃料5万円未満</div>
+
+											</a>
+
 											<p class="themesearch-txt">管理費込みで5万円未満！安さにこだわるなら必見</p>-->
              <!-- ↑/list/FR_040_030_CL_theme_04.html↑ -->
              <!-- ↑===================================================================================================================↑ -->
@@ -9792,56 +9801,103 @@
   <script src="/edit/assets/suumo/js/include/inc-fr-list.js?1618453057000">
   </script>
   <script>
-   /** クリップ登録：会員. */
-	var CLIP_KAIIN = "11";
-	/** クリップ登録：非会員. */
-	var CLIP_HIKAIIN = "12";
-	/** クリップ登録＋メール受信設定：会員. */
-	var CLIP_AND_MAIL_KAIIN = "21";
-	/** クリップ登録＋メール受信設定：非会員. */
-	var CLIP_AND_MAIL_HIKAIIN = "22";
-	/** メールアドレスチェック. */
-	var CLIP_CHECK_MAIL = "90";
-	/** 検索条件登録：会員. */
-	var JOKEN_KAIIN = "11";
-	/** 検索条件登録：非会員. */
-	var JOKEN_HIKAIIN = "12";
-	/** 検索条件登録＋メール受信設定：会員. */
-	var JOKEN_AND_MAIL_KAIIN = "21";
-	/** 検索条件登録＋メール受信設定：非会員. */
-	var JOKEN_AND_MAIL_HIKAIIN = "22";
-	/** メールアドレスチェック. */
-	var JOKEN_CHECK_MAIL = "90";
-	/** ログイン状態 */
-	
+   /** クリップ登録：会員. */
+
+	var CLIP_KAIIN = "11";
+
+	/** クリップ登録：非会員. */
+
+	var CLIP_HIKAIIN = "12";
+
+	/** クリップ登録＋メール受信設定：会員. */
+
+	var CLIP_AND_MAIL_KAIIN = "21";
+
+	/** クリップ登録＋メール受信設定：非会員. */
+
+	var CLIP_AND_MAIL_HIKAIIN = "22";
+
+	/** メールアドレスチェック. */
+
+	var CLIP_CHECK_MAIL = "90";
+
+	/** 検索条件登録：会員. */
+
+	var JOKEN_KAIIN = "11";
+
+	/** 検索条件登録：非会員. */
+
+	var JOKEN_HIKAIIN = "12";
+
+	/** 検索条件登録＋メール受信設定：会員. */
+
+	var JOKEN_AND_MAIL_KAIIN = "21";
+
+	/** 検索条件登録＋メール受信設定：非会員. */
+
+	var JOKEN_AND_MAIL_HIKAIIN = "22";
+
+	/** メールアドレスチェック. */
+
+	var JOKEN_CHECK_MAIL = "90";
+
+	/** ログイン状態 */
+
+	
+
 	var login = false;
   </script>
   <script>
-   /**
- * controller
- */
-$(function() {
-	$('#js-leftColumnForm').submit(function() {
-		return false;
-	});
-	// マイリストに追加するボタン
-	$('#js-bukkenList .js-addMyList').click(function() {
-		suumo.frList.COMMON.registClipSingle(this);
-	});
-	// 問い合わせする ボタン
-	$('#js-bukkenList .js-singleShiryoSeikyu').click(function() {
-		suumo.frList.COMMON.kobetsuShiryoSanPostAction(this.rel);
-	});
-
-	// 賃貸ローテーションバナー
-	
-	$('#js-fr_lotation_banner').load('/jj/common/parts/JJ901FJ901/?ar=030&times=1716090882086&kkkKoseiCd=C900001&dc=4'.unEscapeHTML(), function () {
-		if(!$('#js-fr_lotation_banner').html().match(/<span id="js-banner-none">/)) {
-			$('#js-fr_lotation_banner').css('display', 'block');
-		}
-	});
-	
-
+   /**
+
+ * controller
+
+ */
+
+$(function() {
+
+	$('#js-leftColumnForm').submit(function() {
+
+		return false;
+
+	});
+
+	// マイリストに追加するボタン
+
+	$('#js-bukkenList .js-addMyList').click(function() {
+
+		suumo.frList.COMMON.registClipSingle(this);
+
+	});
+
+	// 問い合わせする ボタン
+
+	$('#js-bukkenList .js-singleShiryoSeikyu').click(function() {
+
+		suumo.frList.COMMON.kobetsuShiryoSanPostAction(this.rel);
+
+	});
+
+
+
+	// 賃貸ローテーションバナー
+
+	
+
+	$('#js-fr_lotation_banner').load('/jj/common/parts/JJ901FJ901/?ar=030&times=1716090882086&kkkKoseiCd=C900001&dc=4'.unEscapeHTML(), function () {
+
+		if(!$('#js-fr_lotation_banner').html().match(/<span id="js-banner-none">/)) {
+
+			$('#js-fr_lotation_banner').css('display', 'block');
+
+		}
+
+	});
+
+	
+
+
+
 });
   </script>
   <!-- ThirdPartyTagFrList01 START -->
@@ -9849,119 +9905,225 @@ $(function() {
   <script language="JavaScript" src="/jj/jjcommon/sc/catalyst.js?20180328">
   </script>
   <script language="JavaScript">
-   <!--
+   <!--
 
-
-var rsid = "FR";
-var tb = "040";
+
+
+
+var rsid = "FR";
+
+var tb = "040";
+
 //-->
   </script>
   <script language="JavaScript" src="/jj/jjcommon/sc/s_code.js">
   </script>
   <script language="JavaScript">
-   <!--
-s.events = "";
-s.products = "";
-ke = "";
-bs = "";
-ss = "";
-bc = "";
-nc = "";
-tjh = "";
-jjh = "";
-kc = "";
-seq = "";
-s.pageName = "f301C11y";
-shiryoType = "";
-s.pageType = "";
-s.prop3 = "f301C11y";
-s.prop12 = "";
-s.prop13 = "C";
-s.prop14 = "040";
-s.prop15 = "030";
-s.prop16 = "";
-s.prop17 = "";
-s.prop18 = "";
-s.prop21 = "";
-s.prop25 = "030";
-s.prop26 = addParam(s.prop26,"");
-s.prop26 = addParam(s.prop26,"");
-s.prop27 = "";
-s.prop28 = addParam(s.prop28,"");
-s.prop28 = addParam(s.prop28,"");
-s.prop29 = addParam(s.prop29,"");
-s.prop29 = addParam(s.prop29,"");
-s.prop30 = "";
-s.prop31 = "";
-s.prop32 = getKskbn();
-s.prop33 = getSiteKbn();
-s.prop36 = "";
-s.prop37 = "";
-s.prop43 = "";
-s.prop55 = "";
-s.prop56 = "";
-s.eVar8 = "";
-s.eVar12 = "";
-s.eVar13 = "C";
-s.eVar14 = "040";
-s.eVar15 = "030";
-s.eVar16 = "";
-s.eVar17 = "";
-s.eVar18 = "";
-s.eVar19 = "";
-s.eVar21 = "";
-s.eVar22 = "040";
-s.eVar25 = "030";
-s.eVar26 = addParam(s.eVar26,"");
-s.eVar26 = addParam(s.eVar26,"");
-s.eVar27 = "";
-s.eVar28 = addParam(s.eVar28,"");
-s.eVar28 = addParam(s.eVar28,"");
-s.eVar29 = addParam(s.eVar29,"");
-s.eVar29 = addParam(s.eVar29,"");
-s.eVar30 = "";
-s.eVar31 = "";
-s.eVar32 = getKskbn();
-s.eVar33 = getSiteKbn();
-s.eVar36 = "";
-s.eVar37 = "";
-s.eVar40 = "";
-s.eVar55 = "";
-s.eVar56 = "";
-s.list1 = "";
-seikyuFlg = "";
-trace_p = "f301C11y";
-
-s.prop47 = "";
-s.eVar47 = "";
-
-
-
+   <!--
 
-var areaCd3 = getAreaCd(s.products, s.pageName);
-if(seikyuFlg == '2') {
-	var shiryoId = getShiryoId(ss, bs);
-	s.products = editShiryoParam( bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
-} else if(seikyuFlg == '1') {
-	var shiryoId = getShiryoId(ss, bs);
-	var pageName = getPageName(shiryoId);
-	s.products = editShiryoParam(  bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
-	s.pageName =  pageName;
-	s.prop3 = pageName ;
-	trace_p = pageName ;
-} else if(seikyuFlg == '3') {
-	var shiryoId = '20';
-	s.products = editShiryoParam( bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
-} else {
-	s.products = editProductsParam(s.products, rsid, s.eVar22, seikyuFlg);
-}
-s.prop12 = getKaisha(rsid , s.prop12);
-s.eVar12 = getKaisha(rsid , s.eVar12);
-
-trace_p = editVOSCode(s.eVar15, s.eVar25, areaCd3, s.eVar22, nc, bc, trace_p);
-s.pageName = getFrPageName(trace_p);
-s.prop3 = getFrPageName(trace_p);
-s.events = editEvents(s.eVar22, s.events);
+s.events = "";
+
+s.products = "";
+
+ke = "";
+
+bs = "";
+
+ss = "";
+
+bc = "";
+
+nc = "";
+
+tjh = "";
+
+jjh = "";
+
+kc = "";
+
+seq = "";
+
+s.pageName = "f301C11y";
+
+shiryoType = "";
+
+s.pageType = "";
+
+s.prop3 = "f301C11y";
+
+s.prop12 = "";
+
+s.prop13 = "C";
+
+s.prop14 = "040";
+
+s.prop15 = "030";
+
+s.prop16 = "";
+
+s.prop17 = "";
+
+s.prop18 = "";
+
+s.prop21 = "";
+
+s.prop25 = "030";
+
+s.prop26 = addParam(s.prop26,"");
+
+s.prop26 = addParam(s.prop26,"");
+
+s.prop27 = "";
+
+s.prop28 = addParam(s.prop28,"");
+
+s.prop28 = addParam(s.prop28,"");
+
+s.prop29 = addParam(s.prop29,"");
+
+s.prop29 = addParam(s.prop29,"");
+
+s.prop30 = "";
+
+s.prop31 = "";
+
+s.prop32 = getKskbn();
+
+s.prop33 = getSiteKbn();
+
+s.prop36 = "";
+
+s.prop37 = "";
+
+s.prop43 = "";
+
+s.prop55 = "";
+
+s.prop56 = "";
+
+s.eVar8 = "";
+
+s.eVar12 = "";
+
+s.eVar13 = "C";
+
+s.eVar14 = "040";
+
+s.eVar15 = "030";
+
+s.eVar16 = "";
+
+s.eVar17 = "";
+
+s.eVar18 = "";
+
+s.eVar19 = "";
+
+s.eVar21 = "";
+
+s.eVar22 = "040";
+
+s.eVar25 = "030";
+
+s.eVar26 = addParam(s.eVar26,"");
+
+s.eVar26 = addParam(s.eVar26,"");
+
+s.eVar27 = "";
+
+s.eVar28 = addParam(s.eVar28,"");
+
+s.eVar28 = addParam(s.eVar28,"");
+
+s.eVar29 = addParam(s.eVar29,"");
+
+s.eVar29 = addParam(s.eVar29,"");
+
+s.eVar30 = "";
+
+s.eVar31 = "";
+
+s.eVar32 = getKskbn();
+
+s.eVar33 = getSiteKbn();
+
+s.eVar36 = "";
+
+s.eVar37 = "";
+
+s.eVar40 = "";
+
+s.eVar55 = "";
+
+s.eVar56 = "";
+
+s.list1 = "";
+
+seikyuFlg = "";
+
+trace_p = "f301C11y";
+
+
+
+s.prop47 = "";
+
+s.eVar47 = "";
+
+
+
+
+
+
+
+
+var areaCd3 = getAreaCd(s.products, s.pageName);
+
+if(seikyuFlg == '2') {
+
+	var shiryoId = getShiryoId(ss, bs);
+
+	s.products = editShiryoParam( bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
+
+} else if(seikyuFlg == '1') {
+
+	var shiryoId = getShiryoId(ss, bs);
+
+	var pageName = getPageName(shiryoId);
+
+	s.products = editShiryoParam(  bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
+
+	s.pageName =  pageName;
+
+	s.prop3 = pageName ;
+
+	trace_p = pageName ;
+
+} else if(seikyuFlg == '3') {
+
+	var shiryoId = '20';
+
+	s.products = editShiryoParam( bc , nc , tjh , jjh , kc , seq , rsid , shiryoId , seikyuFlg , s.prop15, s.eVar22);
+
+} else {
+
+	s.products = editProductsParam(s.products, rsid, s.eVar22, seikyuFlg);
+
+}
+
+s.prop12 = getKaisha(rsid , s.prop12);
+
+s.eVar12 = getKaisha(rsid , s.eVar12);
+
+
+
+trace_p = editVOSCode(s.eVar15, s.eVar25, areaCd3, s.eVar22, nc, bc, trace_p);
+
+s.pageName = getFrPageName(trace_p);
+
+s.prop3 = getFrPageName(trace_p);
+
+s.events = editEvents(s.eVar22, s.events);
+
 
 var s_code=s.t();if(s_code)document.write(s_code);//-->
   </script>
