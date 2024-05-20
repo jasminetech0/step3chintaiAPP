@@ -17,14 +17,18 @@ if "df_user" not in st.session_state:
 # トップページ(ログインページ)
 def top():
     #タイトル
-    st.title('（仮）不動産スマートセレクト')
-    st.image("./picture/top_picture.png")
-
+    top_image = st.empty()
+    with top_image.container():
+        st.title('（仮）不動産スマートセレクト')
+        st.image("./picture/top_picture.png")
     username = st.sidebar.text_input("ユーザー名")
     password = st.sidebar.text_input("パスワード")
+    # ログインが成功したらメイン画面に遷移する
     if st.sidebar.button("ログイン"):
         st.session_state.df_user, st.session_state.login_status = login(username, password)
+    # アカウント登録ボタンを押すと登録画面に遷移する
     if st.sidebar.button("アカウント登録"):
+        top_image.empty()
         account_registration()
 
 # メイン画面
