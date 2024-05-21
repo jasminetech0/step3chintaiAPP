@@ -14,6 +14,6 @@ import pandas as pd
 import folium
 
 def selected_realestates_map(df_realestates):
-    
-
+    st.map(df_realestates[["latitude", "longitude"]])
+    df_selected_realestates = df_realestates
     return df_selected_realestates

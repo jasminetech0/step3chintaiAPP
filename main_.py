@@ -2,6 +2,7 @@
 from account_registration_ import account_registration
 from login_ import login
 from realestate_search_ import realestate_search
+from selected_realestates_map_ import selected_realestates_map
 
 #ライブラリをインストール
 import streamlit as st
@@ -30,6 +31,7 @@ def top():
     if st.sidebar.button("アカウント登録"):
         top_image.empty()
         account_registration()
+    
 
 # メイン画面
 def main():
@@ -57,7 +59,10 @@ def main():
     if "df_realestates" in st.session_state:        
         # マップ表示～物件選択の動きを別ファイルにできるか？
         # インタラクティブなマップにする必要あり
-        st.map(st.session_state.df_realestates[["latitude", "longitude"]])
+        mapholder = st.empty()
+        with mapholder.container():
+            selected_realestates_map(st.session_state.df_realestates)
+        # st.map(st.session_state.df_realestates[["latitude", "longitude"]])
 
         # インタラクティブなマップで選択した物件のリストが入るようにする
         st.session_state.df_selected_realestates = st.session_state.df_realestates
