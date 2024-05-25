@@ -41,7 +41,8 @@ if st.sidebar.button("検索"):
     ]
 
     # フィルタリング結果の表示
-    st.write("検索結果:", filtered_df)
+    st.write(f"検索結果: {len(filtered_df)}件")
+    st.dataframe(filtered_df)  # ここでst.dataframeを使用してインタラクティブなテーブルを表示
 
     # 地図の作成
     if not filtered_df.empty:
@@ -49,7 +50,11 @@ if st.sidebar.button("検索"):
 
         # マーカーの追加
         for idx, row in filtered_df.iterrows():
-            folium.Marker(location=[row['緯度'], row['経度']], popup=row['物件名']).add_to(m)
+            folium.Marker(
+                location=[row['緯度'], row['経度']], 
+                popup=f"{row['物件名']} - 賃料: {row['賃料']}円 - 間取り: {row['間取り']}",
+                icon=folium.Icon(color='blue', icon='info-sign')
+            ).add_to(m)
 
         # 地図の表示
         folium_static(m)

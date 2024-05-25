@@ -42,17 +42,17 @@ sample_data = [
 ]
 
 # Streamlit UI
-st.title('Select Information to Share')
+st.title('選択した情報を共有')
 
 # データのURLを取得
 urls = [item[0] for item in sample_data]
 address = [item[1] for item in sample_data]
 
 # 情報の表示と選択
-selected_indices = st.multiselect('Select information to share:', range(len(sample_data)), format_func=lambda x: address[x])
+selected_indices = st.multiselect('選択した情報を共有:', range(len(sample_data)), format_func=lambda x: address[x])
 
 # 受信者のメールアドレスを入力
-to_email = st.text_input('Recipient Email')
+to_email = st.text_input('共有先のメールアドレスを入力')
 
 # Shareボタン
 if st.button('Share'):
