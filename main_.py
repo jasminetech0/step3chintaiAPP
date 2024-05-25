@@ -12,6 +12,9 @@ import pandas as pd
 if "login_status" not in st.session_state:
     st.session_state.login_status = False
 
+if "account_register" not in st.session_state:
+    st.session_state.account_register = False
+
 if "df_user" not in st.session_state:
     st.session_state.df_user = pd.DataFrame()
 
@@ -27,11 +30,11 @@ def top():
     # ログインが成功したらメイン画面に遷移する
     if st.sidebar.button("ログイン"):
         st.session_state.df_user, st.session_state.login_status = login(username, password)
+        st.rerun()
     # アカウント登録ボタンを押すと登録画面に遷移する
     if st.sidebar.button("アカウント登録"):
-        top_image.empty()
-        account_registration()
-    
+        st.session_state.account_register = True
+        st.rerun()
 
 # メイン画面
 def main():
@@ -71,13 +74,18 @@ def main():
             st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
             st.dataframe(st.session_state.df_selected_realestates)
             st.write(f"##### ここに相場比較を入れる。別ページにするかは要検討")
-            st.button("Share")
+            if st.button("Share"):
+                ##ここにシェア機能をつなげる
+                # message = sendemail(subject, df_share, to_email)
+                st.write(message)
     else:
         st.write(f"## ようこそ")
     
 
 # ログインしたらメイン画面を呼び出す。
-if st.session_state.login_status:
+if st.session_state.account_register:
+    st.session_state.account_register = account_registration()
+elif st.session_state.login_status:
     main()
 else:
     top()
