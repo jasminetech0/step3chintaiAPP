@@ -13,8 +13,15 @@ st.sidebar.markdown("## 🏢エリア")
 selected_areas = [area for area in areas if st.sidebar.checkbox(area, key=area)]
 
 st.sidebar.markdown("## 💰賃料")
-min_rent = st.sidebar.number_input("最低賃料を入力してください", min_value=0)
-max_rent = st.sidebar.number_input("最高賃料を入力してください", min_value=min_rent)
+min_rent, max_rent = st.sidebar.slider(
+    "賃料の範囲を選択してください",
+    min_value=100000,
+    max_value=300000,
+    value=(100000, 300000),
+    step=10000
+)
+
+st.write(f"選択された賃料範囲: {min_rent}円 〜 {max_rent}円")
 
 st.sidebar.markdown("## 🏠間取り")
 selected_layouts = [layout for layout in layouts if st.sidebar.checkbox(layout, key=layout)]
@@ -31,7 +38,7 @@ selected_layouts_flat = [item for sublist in [layout_mapping[layout] for layout 
 if st.sidebar.button("検索"):
     # CSVファイルの読み込み
     df = pd.read_csv('C:/Users/jiebing/Desktop/ChintaiAPP/make_db/tokyo6ku_cleaned.csv')
-    
+
     # データのフィルタリング
     filtered_df = df[
         (df['エリア'].isin(selected_areas)) &
