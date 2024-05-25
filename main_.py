@@ -3,6 +3,7 @@ from account_registration_ import account_registration
 from login_ import login
 from realestate_search_ import realestate_search
 from selected_realestates_map_ import selected_realestates_map
+from make_map_ import make_map
 
 #ライブラリをインストール
 import streamlit as st
@@ -45,17 +46,33 @@ def main():
 
     # サイドバーに各種条件を設定
     st.sidebar.markdown("## 🏢エリア")
-    selected_areas = [st.sidebar.checkbox(area, key=area) for area in areas]
+    selected_areas = [area for area in areas if st.sidebar.checkbox(area, key=area)]
 
     st.sidebar.markdown("## 💰賃料")
-    min_rent = st.sidebar.number_input("最低賃料を入力してください", min_value=0)
-    max_rent = st.sidebar.number_input("最高賃料を入力してください", min_value=min_rent)
+    min_rent, max_rent = st.sidebar.slider(
+        "賃料の範囲を選択してください",
+        min_value=100000,
+        max_value=300000,
+        value=(100000, 300000),
+        step=10000
+    )
+
+    st.write(f"選択された賃料範囲: {min_rent}円 〜 {max_rent}円")
 
     st.sidebar.markdown("## 🏠間取り")
-    selected_layouts = [st.sidebar.checkbox(layout, key=layout) for layout in layouts]
+    selected_layouts = [layout for layout in layouts if st.sidebar.checkbox(layout, key=layout)]
+
+    # 間取りのフィルタリングを適用
+    layout_mapping = {
+        "1LDK": ["1LDK"],
+        "2K~2LDK": ["2K", "2LDK"],
+        "3K~3LDK": ["3K", "3LDK"]
+    }
+    selected_layouts_flat = [item for sublist in [layout_mapping[layout] for layout in selected_layouts] for item in sublist]
 
     # 検索ボタンを押すと
     if st.sidebar.button("検索"):
+        make_map(selected_areas, min_rent, max_rent, selected_layouts_flat)
         st.session_state.df_realestates = realestate_search(selected_areas, min_rent, max_rent, selected_layouts)
 
     # メイン画面
