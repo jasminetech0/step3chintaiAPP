@@ -44,9 +44,7 @@ def realestate_search(selected_areas, min_rent, max_rent, selected_layouts_flat)
         (df['間取り'].isin(selected_layouts_flat))
     ]
 
-    # フィルタリング結果の表示
-    st.write(f"検索結果: {len(filtered_df)}件")
-    disabled = filtered_df.columns
+    
     filtered_df["check"] = False
     # filtered_df["check"].fillna(False)
     # st.data_editor(filtered_df, disabled=disabled)
