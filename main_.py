@@ -2,10 +2,11 @@
 from account_registration_ import account_registration
 from login_ import login
 from realestate_search_ import realestate_search
-from selected_realestates_map_ import selected_realestates_map
 from make_map_ import make_map
+from compare_realestates_ import compare_realestates
 from shareinfo_ import shareinfo, selected_realestates_str  # 必要な関数とデータをインポート
 from display_rent_comparison_ import display_rent_comparison
+
 
 #ライブラリをインストール
 import streamlit as st
@@ -20,6 +21,20 @@ if "account_register" not in st.session_state:
 
 if "df_user" not in st.session_state:
     st.session_state.df_user = pd.DataFrame()
+
+# カスタムCSSでコンテナサイズが画面幅いっぱいにできるように
+st.markdown(
+    """
+    <style>
+    .main .block-container {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # トップページ(ログインページ)
 def top():
@@ -59,8 +74,6 @@ def main():
         step=10000
     )
 
-    st.write(f"選択された賃料範囲: {min_rent}円 〜 {max_rent}円")
-
     st.sidebar.markdown("## 🏠間取り")
     selected_layouts = [layout for layout in layouts if st.sidebar.checkbox(layout, key=layout)]
 
@@ -72,27 +85,36 @@ def main():
     }
     selected_layouts_flat = [item for sublist in [layout_mapping[layout] for layout in selected_layouts] for item in sublist]
 
-    # 検索ボタンを押すと
+    # 検索ボタンを押すとDBから検索条件に合う物件リストを返す
     if st.sidebar.button("検索"):
-        make_map(selected_areas, min_rent, max_rent, selected_layouts_flat)
-        st.session_state.df_realestates = realestate_search(selected_areas, min_rent, max_rent, selected_layouts)
+        st.session_state.df_realestates = realestate_search(selected_areas, min_rent, max_rent, selected_layouts_flat)
 
     # メイン画面
-    if "df_realestates" in st.session_state:        
-        # マップ表示～物件選択の動きを別ファイルにできるか？
-        # インタラクティブなマップにする必要あり
-        mapholder = st.empty()
-        with mapholder.container():
-            selected_realestates_map(st.session_state.df_realestates)
-        # st.map(st.session_state.df_realestates[["latitude", "longitude"]])
-
+    if "df_realestates" in st.session_state:
+        # 検索結果の表示
+        col_rent, col_result = st.columns(2)
+        with col_rent:
+            col_rent.write(f"選択された賃料範囲: {min_rent}円 〜 {max_rent}円")
+        with col_result:
+            col_result.write(f"検索結果: {len(st.session_state.df_realestates)}件")
+        # 表示する列を定義
+        displayed = ["エリア", "最寄り駅と距離", "賃料", "敷金", "礼金", "間取り", "築年数"]
+        st.session_state.df_realestates["check"] = st.data_editor(st.session_state.df_realestates[["check"] + displayed], hide_index="bool",disabled=displayed)["check"]
         # インタラクティブなマップで選択した物件のリストが入るようにする
-        st.session_state.df_selected_realestates = st.session_state.df_realestates
+        st.session_state.df_selected_realestates = st.session_state.df_realestates[st.session_state.df_realestates["check"]==True]
 
         if "df_selected_realestates" in st.session_state:
-            st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
-            st.dataframe(st.session_state.df_selected_realestates)
+            with st.container(border=True):
+                col1, col2 = st.columns([0.5, 0.5]) # マップと比較表を横並びにして表示させて見やすいようにする。
+                with col1:
+                    # 選択された物件のみをマップに表示
+                    if len(st.session_state.df_selected_realestates) > 0:
+                        make_map(st.session_state.df_selected_realestates[["物件名", "賃料", "間取り","緯度","経度"]])
+                with col2:
+                    # st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
+                    compare_realestates(st.session_state.df_selected_realestates)
             st.write(f"##### ここに相場比較を入れる。別ページにするかは要検討")
+
 
             # display_rent_comparison 関数を呼び出す
             display_rent_comparison()
@@ -106,10 +128,12 @@ def main():
             # メールアドレスの入力
             to_email = st.text_input("送信先メールアドレスを入力してください")  
 
+
             if st.button("Share"):
                 ##ここにシェア機能をつなげる
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
+
                     message = shareinfo(selected_realestates_str, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
