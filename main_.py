@@ -3,9 +3,10 @@ from account_registration_ import account_registration
 from login_ import login
 from realestate_search_ import realestate_search
 from make_map_ import make_map
-from shareinfo_ import share
-from display_rent_comparison_ import display_rent_comparison
 from compare_realestates_ import compare_realestates
+from shareinfo_ import shareinfo, selected_realestates_str  # 必要な関数とデータをインポート
+from display_rent_comparison_ import display_rent_comparison
+
 
 #ライブラリをインストール
 import streamlit as st
@@ -113,22 +114,31 @@ def main():
                     # st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
                     compare_realestates(st.session_state.df_selected_realestates)
             st.write(f"##### ここに相場比較を入れる。別ページにするかは要検討")
-            
+
+
+            # display_rent_comparison 関数を呼び出す
+            display_rent_comparison()
+
+
             # シェアする物件を選択
-            selected_indices = st.multiselect("シェアする物件を選択してください", st.session_state.df_selected_realestates.index)
-            selected_realestates = st.session_state.df_selected_realestates.loc[selected_indices, 'Url'].tolist()
+            #Shareinfoのサンプルデータを読み込む(↓一旦下記コードをMark Down)
+            # selected_indices = st.multiselect("シェアする物件を選択してください", st.session_state.df_selected_realestates.index)
+            # selected_realestates = st.session_state.df_selected_realestates.loc[selected_indices, 'Url'].tolist()
 
             # メールアドレスの入力
-            to_email = st.text_input("送信先メールアドレスを入力してください")
+            to_email = st.text_input("送信先メールアドレスを入力してください")  
+
 
             if st.button("Share"):
                 ##ここにシェア機能をつなげる
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
-                    message = share(selected_realestates, to_email)  # shareinfo_.py の share 関数を使用
+
+                    message = shareinfo(selected_realestates_str, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
                     st.error("送信先メールアドレスを入力してください。")
+             
     else:
         st.write(f"## ようこそ")
     
