@@ -5,6 +5,7 @@ from realestate_search_ import realestate_search
 from selected_realestates_map_ import selected_realestates_map
 from make_map_ import make_map
 from shareinfo_ import share  # shareinfo.py から関数をインポート
+from display_rent_comparison_ import display_rent_comparison
 
 #ライブラリをインストール
 import streamlit as st
@@ -41,7 +42,7 @@ def top():
 # メイン画面
 def main():
     # エリアの選択肢
-    areas = ["千代田区", "中央区", "港区", "渋谷区", "新宿区","文京区"]
+    areas = ["千代田区", "中央区", "港区", "渋谷区", "新宿区"]
     # 間取りの選択肢
     layouts = [ "1LDK", "2K~2LDK", "3K~3LDK"]
 
@@ -92,6 +93,9 @@ def main():
             st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
             st.dataframe(st.session_state.df_selected_realestates)
             st.write(f"##### ここに相場比較を入れる。別ページにするかは要検討")
+
+            # display_rent_comparison 関数を呼び出す
+            display_rent_comparison()
 
 
             # シェアする物件を選択
