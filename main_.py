@@ -110,7 +110,7 @@ def main():
                 ##ここにシェア機能をつなげる
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
-                    message = shareinfo(selected_realestates, to_email)  # shareinfo_.py の shareinfo 関数を使用
+                    message = shareinfo(selected_realestates_str, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
                     st.error("送信先メールアドレスを入力してください。")

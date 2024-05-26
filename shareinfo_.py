@@ -10,8 +10,8 @@ import os
 load_dotenv()
 
 def send_email(subject, body, to_email):
-    from_email = "your_email@example.com"
-    from_password = os.getenv('EMAIL_PASSWORD')
+    from_email = os.getenv('from_email')  # .envファイルから送信元メールアドレスを取得
+    from_password = os.getenv('EMAIL_PASSWORD')  # .envファイルからパスワードを取得
 
     msg = MIMEText(body)
     msg['Subject'] = subject
@@ -28,17 +28,6 @@ def send_email(subject, body, to_email):
     except Exception as e:
         return str(e)
 
-def shareinfo(selected_realestates, to_email):
-    if selected_realestates and to_email:
-        subject = "Selected Real Estates"
-        body = "\n".join(selected_realestates)
-        result = send_email(subject, body, to_email)
-        return result
-    else:
-        return 'Please select real estates and provide a recipient email!'
-    
-
-
 # サンプルデータ
 selected_realestates = [
     ["https://suumo.jp/chintai/jnc_000090614568/?bc=100381210517", "東京都文京区音羽１", 35.713969, 139.729924, "3LDK", 288000, 288000, 288000, 11, 67.01, "江戸川橋駅", 3, "https://img01.suumo.com/front/gazo/fr/bukken/517/100381210517/100381210517_ct.jpg"],
@@ -53,6 +42,21 @@ selected_realestates_str = [
     f"URL: {item[0]}, 住所: {item[1]}, 間取り: {item[4]}, 賃料: {item[5]}, 敷金: {item[6]}, 礼金: {item[7]}, 最寄り駅: {item[10]}, 駅からの距離: {item[11]}分"
     for item in selected_realestates
 ]
+
+
+
+def shareinfo(selected_realestates, to_email):
+    if selected_realestates and to_email:
+        subject = "Selected Real Estates"
+        body = "\n".join(selected_realestates)
+        result = send_email(subject, body, to_email)
+        return result
+    else:
+        return 'Please select real estates and provide a recipient email!'
+    
+
+
+
 
 
 
