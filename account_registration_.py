@@ -48,9 +48,6 @@ def account_registration():
             with sqlite3.connect('./user.db') as conn:
                 df_user.to_sql('users', conn, if_exists="append", index=False)
             st.toast("登録完了！")
-            return False
-            st.rerun()
         else:
             st.warning("必須項目を入力してください。")
             submitted = False
-            return True

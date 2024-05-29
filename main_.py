@@ -51,6 +51,7 @@ def top():
         st.rerun()
     if st.sidebar.button("ログインせずに利用する"):
         st.session_state.login_status = True
+        st.session_state.df_user = pd.Series(data=["ゲスト", None], index=["username","share_mail_address"])
         st.rerun()
     # アカウント登録ボタンを押すと登録画面に遷移する
     if st.sidebar.button("アカウント登録"):
@@ -130,7 +131,7 @@ def main():
             # selected_realestates = st.session_state.df_selected_realestates.loc[selected_indices, 'Url'].tolist()
 
             # メールアドレスの入力
-            to_email = st.text_input("送信先メールアドレスを入力してください", value=st.session_state.df_user.at[0, "share_mail_address"])
+            to_email = st.text_input("送信先メールアドレスを入力してください", value=st.session_state.df_user.at["share_mail_address"])
 
             if st.button("Share"):
                 ##ここにシェア機能をつなげる
@@ -143,7 +144,7 @@ def main():
                     st.error("送信先メールアドレスを入力してください。")
     else:
         st.write(f"## ようこそ！！")
-        st.write(f"## ユーザー名:{st.session_state.df_user.at[0, "username"]}")
+        st.write(f"## ユーザー名:{st.session_state.df_user.at["username"]}")
 
 # ログインしたらメイン画面を呼び出す。
 if st.session_state.account_register:
