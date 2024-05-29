@@ -16,7 +16,7 @@ import pandas as pd
 compared = ["物件名", "エリア", "最寄り駅と距離", "賃料", "敷金", "礼金", "間取り", "専有面積", "築年数", "イメージ画像"]
 
 def compare_realestates(df_selected_realestates):
-    df_selected_realestates.reset_index(inplace=True)
+    # df_selected_realestates.reset_index(inplace=True)
     n_cols = len(df_selected_realestates) + 1   # 比較物件の数+1
     number_cols = st.columns(n_cols)
     for i in range(1, n_cols):

@@ -46,8 +46,11 @@ def top():
     username = st.sidebar.text_input("ユーザー名")
     password = st.sidebar.text_input("パスワード")
     # ログインが成功したらメイン画面に遷移する
-    if st.sidebar.button("ログイン"):
+    if st.sidebar.button("ログイン",type="primary"):
         st.session_state.df_user, st.session_state.login_status = login(username, password)
+        st.rerun()
+    if st.sidebar.button("ログインせずに利用する"):
+        st.session_state.login_status = True
         st.rerun()
     # アカウント登録ボタンを押すと登録画面に遷移する
     if st.sidebar.button("アカウント登録"):
@@ -102,8 +105,9 @@ def main():
         st.session_state.df_realestates["check"] = st.data_editor(st.session_state.df_realestates[["check"] + displayed], hide_index="bool",disabled=displayed)["check"]
         # インタラクティブなマップで選択した物件のリストが入るようにする
         st.session_state.df_selected_realestates = st.session_state.df_realestates[st.session_state.df_realestates["check"]==True]
+        st.session_state.df_selected_realestates.reset_index(inplace=True)
 
-        if "df_selected_realestates" in st.session_state:
+        if len(st.session_state.df_selected_realestates) > 0: # "df_selected_realestates" in st.session_state:
             with st.container(border=True):
                 col1, col2 = st.columns([0.5, 0.5]) # マップと比較表を横並びにして表示させて見やすいようにする。
                 with col1:
@@ -126,22 +130,20 @@ def main():
             # selected_realestates = st.session_state.df_selected_realestates.loc[selected_indices, 'Url'].tolist()
 
             # メールアドレスの入力
-            to_email = st.text_input("送信先メールアドレスを入力してください")  
-
+            to_email = st.text_input("送信先メールアドレスを入力してください", value=st.session_state.df_user.at[0, "share_mail_address"])
 
             if st.button("Share"):
                 ##ここにシェア機能をつなげる
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
 
-                    message = shareinfo(selected_realestates_str, to_email)  # shareinfo_.py の shareinfo 関数を使用
+                    message = shareinfo(st.session_state.df_selected_realestates, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
                     st.error("送信先メールアドレスを入力してください。")
-             
     else:
-        st.write(f"## ようこそ")
-    
+        st.write(f"## ようこそ！！")
+        st.write(f"## ユーザー名:{st.session_state.df_user.at[0, "username"]}")
 
 # ログインしたらメイン画面を呼び出す。
 if st.session_state.account_register:
