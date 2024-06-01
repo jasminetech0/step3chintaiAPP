@@ -27,14 +27,19 @@ def check_hashes(password,hashed_text):
 def login_user(username,password):
     with sqlite3.connect('./user.db') as conn:
         cur = conn.cursor()
-        sql = f'SELECT * FROM users'
-        df_tmp = pd.read_sql(sql, conn)
-        result = cur.execute(sql)
-    return  result, df_tmp.iloc[0]
+        cur.execute(f'SELECT password FROM users WHERE username ="{username}"')
+        if cur.fetchall()[0][0] == password:
+            sql = f'SELECT * FROM users'
+            df_tmp = pd.read_sql(sql, conn).iloc[0]
+            result = True
+        else:
+            df_tmp = pd.DataFrame()
+            result = False
+    return  result, df_tmp
 
 def login(username, password):
     hashed_pwd = make_hash(password)
-    result, df_user  = login_user(username, check_hashes(password, hashed_pwd))
+    result, df_user  = login_user(username, hashed_pwd)
     if result:
         login_judge = True
         # ユーザーDBの情報から認証した結果を返す
