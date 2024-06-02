@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-def display_rent_comparison():
+def display_rent_comparison(df_selected_realestates):
     # グラフのデフォルトフォント指定
     plt.rcParams['font.family'] = "DejaVu Sans"
     plt.rcParams['font.size'] = 18  # デフォルトフォントサイズを18に設定
@@ -14,12 +14,9 @@ def display_rent_comparison():
     # CSVファイルの読み込み
     df = pd.read_csv(file_path)
 
-    # エリアの選択肢
-    areas = df['エリア'].unique().tolist()
+    # 選択されたエリアを取得
+    selected_areas = df_selected_realestates['エリア'].unique().tolist()
 
-    # サイドバーにエリア選択を追加
-    st.sidebar.markdown("## 👀相場比較")
-    selected_areas = [area for area in areas if st.sidebar.checkbox(area, key=f"rent_{area}")]
 
     # 間取りの選択肢
     layouts = ["1K", "2K", "2LDK", "3K", "3LDK"]

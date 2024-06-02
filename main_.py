@@ -122,7 +122,7 @@ def main():
 
 
             # display_rent_comparison 関数を呼び出す
-            display_rent_comparison()
+            display_rent_comparison(st.session_state.df_selected_realestates)
 
 
             # シェアする物件を選択
