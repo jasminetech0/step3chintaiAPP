@@ -17,3 +17,5 @@ def make_map(df_selected):
 
     # 地図の表示
     folium_static(m)
+    
+    m.save('map.html')

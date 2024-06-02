@@ -33,4 +33,4 @@ def compare_realestates(df_selected_realestates):
             else:
                 cols[index+1].write(row[compared[i]])
 
-    return 0
+    return df_selected_realestates[compared]

@@ -117,9 +117,8 @@ def main():
                         make_map(st.session_state.df_selected_realestates[["物件名", "賃料", "間取り","緯度","経度"]])
                 with col2:
                     # st.write(f"#### 暫定でサンプルデータのままで表示。お気に入り地点からの時間算出の機能は別ファイルで作成予定")
-                    compare_realestates(st.session_state.df_selected_realestates)
+                    df_share = compare_realestates(st.session_state.df_selected_realestates)
             st.write(f"##### 👀相場比較")
-
 
             # display_rent_comparison 関数を呼び出す
             display_rent_comparison(st.session_state.df_selected_realestates)
@@ -138,7 +137,7 @@ def main():
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
 
-                    message = shareinfo(st.session_state.df_selected_realestates, to_email)  # shareinfo_.py の shareinfo 関数を使用
+                    message = shareinfo(df_share, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
                     st.error("送信先メールアドレスを入力してください。")

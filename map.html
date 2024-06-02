@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3509bc0f24a561bf5757fa1f9afb8878 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3509bc0f24a561bf5757fa1f9afb8878" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3509bc0f24a561bf5757fa1f9afb8878 = L.map(
+                "map_3509bc0f24a561bf5757fa1f9afb8878",
+                {
+                    center: [35.6936212, 139.7685149],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1bdbd26633087e36a1345b4d06b6a342 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_1bdbd26633087e36a1345b4d06b6a342.addTo(map_3509bc0f24a561bf5757fa1f9afb8878);
+        
+    
+            var marker_6b86575752c02fe8a67f3cb07f5872c3 = L.marker(
+                [35.6938735, 139.7596808],
+                {}
+            ).addTo(map_3509bc0f24a561bf5757fa1f9afb8878);
+        
+    
+            var icon_89e159f2322870ba965c799c1501cc5b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6b86575752c02fe8a67f3cb07f5872c3.setIcon(icon_89e159f2322870ba965c799c1501cc5b);
+        
+    
+        var popup_d1909d6537b532eaf174783a72c1d156 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9661010a68039fb6a1065cd74f9792a7 = $(`<div id="html_9661010a68039fb6a1065cd74f9792a7" style="width: 100.0%; height: 100.0%;">神保町 1LDK 3階 - 賃料: 237000円 - 間取り: 1LDK</div>`)[0];
+                popup_d1909d6537b532eaf174783a72c1d156.setContent(html_9661010a68039fb6a1065cd74f9792a7);
+            
+        
+
+        marker_6b86575752c02fe8a67f3cb07f5872c3.bindPopup(popup_d1909d6537b532eaf174783a72c1d156)
+        ;
+
+        
+    
+    
+            var marker_6bc2acbeea5a8625c9dd0ca1f058f3f5 = L.marker(
+                [35.6933689, 139.777349],
+                {}
+            ).addTo(map_3509bc0f24a561bf5757fa1f9afb8878);
+        
+    
+            var icon_c4d934a7e47a73418a94c17139b9e2c3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6bc2acbeea5a8625c9dd0ca1f058f3f5.setIcon(icon_c4d934a7e47a73418a94c17139b9e2c3);
+        
+    
+        var popup_973156a86411a02d1237ae9984e6909e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a8784121301f1356b8e381229f4c969d = $(`<div id="html_a8784121301f1356b8e381229f4c969d" style="width: 100.0%; height: 100.0%;">神田 1LDK 5階 - 賃料: 118000円 - 間取り: 1LDK</div>`)[0];
+                popup_973156a86411a02d1237ae9984e6909e.setContent(html_a8784121301f1356b8e381229f4c969d);
+            
+        
+
+        marker_6bc2acbeea5a8625c9dd0ca1f058f3f5.bindPopup(popup_973156a86411a02d1237ae9984e6909e)
+        ;
+
+        
+    
+    
+            tile_layer_1bdbd26633087e36a1345b4d06b6a342.addTo(map_3509bc0f24a561bf5757fa1f9afb8878);
+        
+</script>
+</html>
