@@ -4,3 +4,5 @@ pandas
 streamlit-folium
 python-dotenv
 matplotlib
+sqlite3
+hashlib

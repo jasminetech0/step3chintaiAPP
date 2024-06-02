@@ -40,9 +40,9 @@ def display_rent_comparison():
 
             ax = axs[i]
             ax.bar(avg_rent['間取り'], avg_rent['賃料'])
-            ax.set_title(f"{area}の間取りごとの平均賃料")
-            ax.set_xlabel('間取り')
-            ax.set_ylabel('平均賃料（円）')
+            ax.set_title(f"{area}Average Rent Comparison")
+            ax.set_xlabel('Room Size')
+            ax.set_ylabel('Average Rent')
             ax.set_ylim(0, 320000)  # 縦軸の最大値を設定
 
         # 不要なサブプロットを非表示にする
