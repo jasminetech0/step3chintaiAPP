@@ -41,7 +41,7 @@ def top():
     #タイトル
     top_image = st.empty()
     with top_image.container():
-        st.title('（仮）不動産スマートセレクト')
+        st.title('不動産スマートセレクト')
         st.image("./picture/top_picture.png")
     username = st.sidebar.text_input("ユーザー名")
     password = st.sidebar.text_input("パスワード")
@@ -144,7 +144,7 @@ def main():
                     st.error("送信先メールアドレスを入力してください。")
     else:
         st.write(f"## ようこそ！！")
-        st.write(f"## ユーザー名:{st.session_state.df_user.at["username"]}")
+        st.write(f"## ユーザー名:{st.session_state.df_user.at['username']}")
 
 # ログインしたらメイン画面を呼び出す。
 if st.session_state.account_register:
