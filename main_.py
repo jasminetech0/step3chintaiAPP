@@ -136,8 +136,7 @@ def main():
                 ##ここにシェア機能をつなげる
                 # message = sendemail(subject, df_share, to_email)
                 if to_email:
-
-                    message = shareinfo(df_share, to_email)  # shareinfo_.py の shareinfo 関数を使用
+                    message = shareinfo(st.session_state.df_selected_realestates, to_email)  # shareinfo_.py の shareinfo 関数を使用
                     st.write(message)
                 else:
                     st.error("送信先メールアドレスを入力してください。")

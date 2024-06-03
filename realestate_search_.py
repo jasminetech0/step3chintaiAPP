@@ -45,7 +45,7 @@ def realestate_search(selected_areas, min_rent, max_rent, selected_layouts_flat)
     ]
 
     
-    filtered_df["check"] = False
+    filtered_df.loc[:, "check"] = False
     # filtered_df["check"].fillna(False)
     # st.data_editor(filtered_df, disabled=disabled)
     # st.dataframe(filtered_df)  # ここでst.dataframeを使用してインタラクティブなテーブルを表示

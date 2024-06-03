@@ -46,9 +46,9 @@ selected_realestates_str = [
 
 
 def shareinfo(selected_realestates, to_email):
-    if selected_realestates and to_email:
+    if not selected_realestates.empty and to_email:
         subject = "Selected Real Estates"
-        body = "\n".join(selected_realestates)
+        body = "\n".join(selected_realestates.to_string(index=False).split('\n'))
         result = send_email(subject, body, to_email)
         return result
     else:
